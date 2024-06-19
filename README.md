@@ -3,12 +3,12 @@
 ## Overview
 
 This Python script provides a basic framework for performing network spoofing techniques including ARP spoofing. It allows you to manipulate network traffic by spoofing various network elements such as IP addresses and MAC addresses.
-Features
+### Features
 
-    ARP Spoofing: Spoof ARP packets between a victim and a router.
-    DNS Spoofing (Coming Soon): Spoof DNS responses to redirect traffic.
-    MAC Address Spoofing (Coming Soon): Spoof MAC addresses of network devices.
-    IP Address Spoofing (Coming Soon): Spoof IP addresses in network packets.
+1. ARP Spoofing: Spoof ARP packets between a victim and a router.
+2. DNS Spoofing (Coming Soon): Spoof DNS responses to redirect traffic.
+3. MAC Address Spoofing (Coming Soon): Spoof MAC addresses of network devices.
+4. IP Address Spoofing (Coming Soon): Spoof IP addresses in network packets.
 
 ## Requirements
 
